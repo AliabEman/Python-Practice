@@ -321,6 +321,40 @@ def planet(event):
     button.grid(column=1, row=3, sticky='E')
     item4.pack()
 
+    if planet_type == option[10]: #Excel created!!!!
+        #
+        #
+        #
+        #
+        #
+        image = Image.open('Pluto.jpg')
+        basewidth = 400
+    #copy-pasted from stack overflow---
+    #Assigns a new canvas to paste on top of the existing canvas, it creates an image and resizes it based on its size
+    # and imports the photo
+        canvas2 = tk.Canvas(root, height = 400, width = 400, bg = '#171717', bd = 0, highlightthickness= 0, relief= 'ridge')
+        wpercent = (basewidth / float(image.size[0]))
+        hsize = int((float(image.size[1]) * float(wpercent)))
+        image = image.resize((basewidth, hsize), Image.Resampling.LANCZOS)
+        photo = ImageTk.PhotoImage(image)
+        item4= canvas2.create_image(225, 210, image= photo)
+    #---------------------------
+        canvas2.place(relx = 0.05, rely = 0.1, relheight = 0.6, relwidth = 0.5)
+        #For the other frames we need to destroy the children
+
+        #creating labels for the planet:
+        planet_label = tk.Label(desc_frame, text = FULL_PLUTO_DESC, font = ('Arial', 9), bg = '#121212', fg = 'white')
+        planet_label.pack()
+        planet_fact = tk.Label(fact_frame, text = PLUTO_FACT, font = ('Times New Roman', 14), bg = '#121212', fg = 'white')
+        planet_fact.pack(side = 'left')
+        item4.pack()
+
+#
+#
+#
+#
+# Excel Creation ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 canvas = tk.Canvas(root, height=HEIGHT, width=WIDTH, bg='black')
 canvas.pack()
 
@@ -331,7 +365,7 @@ fact_frame = tk.Frame(root, bg = "#212121")
 fact_frame.place(relx = 0.05, rely = 0.72, relheight = 0.2, relwidth = 0.9)
 
 #Dropdown Menu -----
-option = ['Earth', 'Jupiter', 'Neptune', 'Mars', 'Saturn', 'Venus', 'Uranus', 'Mercury', 'Pluto', 'Calculations']
+option = ['Earth', 'Jupiter', 'Neptune', 'Mars', 'Saturn', 'Venus', 'Uranus', 'Mercury', 'Pluto', 'Calculations', 'Excel']
 clicked = StringVar()
 clicked.set(option[0]) #Option set by default to earth, upon running the program, the earth wont automatically popup until clicked
 drop = OptionMenu(root, clicked, *option)
